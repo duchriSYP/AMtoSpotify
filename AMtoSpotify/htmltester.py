@@ -19,7 +19,7 @@ def main():
 
     artists = songs[0].find_all('a', class_="dt-link-to")
     print([artist.text for artist in artists])'''
-    SCROLL_PAUSE_TIME = 2
+    '''SCROLL_PAUSE_TIME = 2
     driver = webdriver.Chrome()
     driver.implicitly_wait(30)
     try:
@@ -36,14 +36,19 @@ def main():
             last_source = new_source
 
         soup = BeautifulSoup(driver.page_source, 'html.parser')
+        print(soup.find('title').text)
         songs = soup.find_all('div', class_='col col-song')
-        print(len(songs))
+        print([song.find('div', class_="song-name typography-label").text for song in songs][0])
         print(songs[0].find('div', class_="song-name typography-label").text)
 
         artists = songs[0].find_all('a', class_="dt-link-to")
-        print([artist.text for artist in artists])
+        print(artists)
     finally:
-        driver.quit()
+        driver.quit()'''
+    tracks = []
+    if tracks:
+        print('fsfdafs')
+
 
 
 if __name__ == "__main__":
