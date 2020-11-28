@@ -1,44 +1,13 @@
-from bottle import route, run, request
 import time
-import requests
 from bs4 import BeautifulSoup
-import urllib.parse
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import constants
-import os
 import spotipy
-from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
-import spotipy.util as util
+from spotipy.oauth2 import SpotifyOAuth
 import datetime
 
 SCROLL_PAUSE_TIME = 2
-
-
-''''# creates authorization header based on access token given
-def auth_header(access_token):
-    return {'Authorization': 'Bearer {}'.format(access_token)}
-
-def get_access_token():
-    spotify_token = constants.access_token
-    test_request = requests.get('https://api.spotify.com/v1/me', headers=auth_header(spotify_token))
-    if test_request.status_code in [401, 403]:
-        spotify_token = _get_new_access_token()
-    return spotify_token
-
-
-def _get_new_access_token():
-    basic_token = os.environ.get("CLIENT_ID")
-    self.c.execute("SELECT value FROM tokens WHERE token_type = 'refresh_token'")
-    refresh_token = self.c.fetchone()[0]
-
-    req_header = {'Authorization': 'Basic {}'.format(basic_token)}
-    req_body = {'grant_type': 'refresh_token', 'refresh_token': refresh_token}
-    r = requests.post('https://accounts.spotify.com/api/token', headers=req_header, data=req_body)
-    res_json = r.json()
-
-    new_token = res_json['access_token']
-    return new_token'''
 
 
 # creates a playlist with the name and creator from the original playlist and  and the given songs, no duplicates
